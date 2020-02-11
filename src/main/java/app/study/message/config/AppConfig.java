@@ -9,13 +9,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("app.study")
 public class AppConfig {
-    @Bean
-    public MessageRepository messageRepository() {
-        return new MessageRepository();
-    }
 
-    @Bean
-    public MessageService messageService() {
-        return new MessageService(messageRepository());
-    }
 }
