@@ -6,7 +6,7 @@ import lombok.Getter;
 public class Message {
     private String text;
 
-    private Message(String text) {
+    public Message(String text) {
         this.text = text;
     }
 }
