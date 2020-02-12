@@ -1,6 +1,7 @@
 package app.study.message.service;
 
 import app.study.message.Message;
+import app.study.message.SecurityCheck;
 import app.study.message.repository.MessageRepository;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class MessageService {
 //    @Autowired
 //    private MessageRepository repository;
 
+    @SecurityCheck
     public Message save(String message) {
         return repository.saveMessage(new Message(message));
     }
