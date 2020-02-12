@@ -9,19 +9,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/messages")
 @RequiredArgsConstructor
 public class MessageController {
     private final MessageService messageService;
 
-    @GetMapping("/hellos")
-    public String hello(Model model) {
-        model.addAttribute("message", "Hello world!");
-        return "hello"; // HttpServletResponse에 전달
+    @GetMapping("/messages")
+    public String index() {
+        return "index";
     }
 
-    @PostMapping("/hellos")
+    @GetMapping("api/messages")
+    @ResponseBody
+    public ResponseEntity<List<Message>> getMessages() {
+        List<Message> messages = messageService.getMessages();
+        return ResponseEntity.ok(messages);
+    }
+
+    @PostMapping("api/messages")
     @ResponseBody
     public ResponseEntity<Message> saveMessage(@RequestBody MessageData data) {
         Message savedMessage = messageService.save(data.getText());

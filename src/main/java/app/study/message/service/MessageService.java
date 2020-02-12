@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Component
 public class MessageService {
     private final static Log log = LogFactory.getLog(MessageService.class);
@@ -35,14 +37,12 @@ public class MessageService {
     @SecurityCheck
     @Transactional
     public Message save(String text) {
-        Message message = repository.saveMessage(new Message(text));
-        updateStatistics();
-
-        return message;
+        return repository.saveMessage(new Message(text));
     }
 
-    // 트랜잭션 롤백용
-    private void updateStatistics() {
-        throw new UnsupportedOperationException("This method is not implemented yey...");
+    @Transactional(readOnly = true)
+    public List<Message> getMessages() {
+        return repository.getMessages();
     }
+
 }
