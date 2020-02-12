@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.*;
 public class MessageController {
     private final MessageService messageService;
 
-    @GetMapping("/messages")
+    @GetMapping("/hellos")
     public String hello(Model model) {
         model.addAttribute("message", "Hello world!");
         return "hello"; // HttpServletResponse에 전달
     }
 
-    @PostMapping("messages")
+    @PostMapping("/hellos")
     @ResponseBody
     public ResponseEntity<Message> saveMessage(@RequestBody MessageData data) {
         Message savedMessage = messageService.save(data.getText());
