@@ -36,4 +36,5 @@ JDBC
 - 직접 JDBC API를 사용한 것 보다구현이 단순해진다. 
 ---
 하이버네이트
-
+- hibernate.Session은 엔티티를 저장하고 불러오기 위한 주요 인터페이스다. 
+- SessionFactory 인스턴스에서 세션을 생성할 수 있다. 
