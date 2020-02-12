@@ -2,13 +2,19 @@ package app.study.message.service;
 
 import app.study.message.Message;
 import app.study.message.SecurityCheck;
+import app.study.message.SecurityChecker;
 import app.study.message.repository.MessageRepository;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class MessageService {
+    private final static Log log = LogFactory.getLog(MessageService.class);
     private MessageRepository repository;
 
     @Autowired // 생성자 주입방식,  생략 가능
@@ -27,7 +33,16 @@ public class MessageService {
 //    private MessageRepository repository;
 
     @SecurityCheck
-    public Message save(String message) {
-        return repository.saveMessage(new Message(message));
+    @Transactional
+    public Message save(String text) {
+        Message message = repository.saveMessage(new Message(text));
+        updateStatistics();
+
+        return message;
+    }
+
+    // 트랜잭션 롤백용
+    private void updateStatistics() {
+        throw new UnsupportedOperationException("This method is not implemented yey...");
     }
 }
