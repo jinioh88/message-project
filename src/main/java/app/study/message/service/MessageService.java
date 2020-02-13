@@ -1,13 +1,10 @@
 package app.study.message.service;
 
-import app.study.message.Message;
-import app.study.message.SecurityCheck;
-import app.study.message.SecurityChecker;
+import app.study.message.model.Message;
+import app.study.message.security.SecurityCheck;
 import app.study.message.repository.MessageRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.Required;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

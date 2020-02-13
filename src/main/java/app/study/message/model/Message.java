@@ -1,4 +1,4 @@
-package app.study.message;
+package app.study.message.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

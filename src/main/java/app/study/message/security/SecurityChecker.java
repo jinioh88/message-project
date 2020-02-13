@@ -1,6 +1,5 @@
-package app.study.message;
+package app.study.message.security;
 
-import app.study.message.repository.MessageRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class SecurityChecker {
     private final static Log log = LogFactory.getLog(SecurityChecker.class);
 
-    @Pointcut("@annotation(SecurityCheck)")
+    @Pointcut("@annotation(app.study.message.security.SecurityCheck)")
     public void checkMethodSecurity() {
 
     }

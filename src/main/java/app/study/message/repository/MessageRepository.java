@@ -1,7 +1,7 @@
 package app.study.message.repository;
 
 
-import app.study.message.Message;
+import app.study.message.model.Message;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
